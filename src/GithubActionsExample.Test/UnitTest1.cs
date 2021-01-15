@@ -15,7 +15,7 @@ namespace GithubActionsTest.Test
         [Fact]
         public void ErrorTest()
         {
-            var result = 3;
+            var result = 2;
             Assert.Equal(2, result);
         }
     }
