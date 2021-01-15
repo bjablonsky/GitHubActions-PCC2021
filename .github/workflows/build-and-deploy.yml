@@ -24,8 +24,8 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore ./src/GithubActionsExample.sln
 #---------------------------   
-#    - name: Test
-#      run: dotnet test --no-restore ./src/GithubActionsExample.sln
+    - name: Test
+      run: dotnet test --no-restore ./src/GithubActionsExample.sln
 #---------------------------
 #     # Uncomment deploy to deploy out to an Azure Web App
 #     # Update app-name with your Web App name 
