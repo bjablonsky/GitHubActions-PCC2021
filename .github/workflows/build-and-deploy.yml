@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-#    - name: Checkout code
-#      uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
     
-#    - name: Setup .NET Core
-#      uses: actions/setup-dotnet@v1
-#      with:
-#        dotnet-version: '3.1.x'
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.x'
     
-#    - name: Install dependencies
-#      run: dotnet restore ./src/GithubActionsExample.sln
+    - name: Install dependencies
+      run: dotnet restore ./src/GithubActionsExample.sln
     
-#    - name: Build
-#      run: dotnet build --configuration Release --no-restore ./src/GithubActionsExample.sln
+    - name: Build
+      run: dotnet build --configuration Release --no-restore ./src/GithubActionsExample.sln
 #---------------------------   
 #    - name: Test
 #      run: dotnet test --no-restore ./src/GithubActionsExample.sln
