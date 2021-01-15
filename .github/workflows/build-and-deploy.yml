@@ -1,0 +1,42 @@
+name: Build and deploy an ASP.NET Core app to Azure Web Apps
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.x'
+    
+    - name: Install dependencies
+      run: dotnet restore ./src/GithubActionsExample.sln
+    
+    - name: Build
+      run: dotnet build --configuration Release --no-restore ./src/GithubActionsExample.sln
+    
+    - name: Test
+      run: dotnet test --no-restore ./src/GithubActionsExample.sln
+
+#     # Uncomment deploy to deploy out to an Azure Web App
+#     # Update app-name with your Web App name 
+#     # Copy the contents of the Web App publish profile to the GitHub secret named AZURE_WEBAPP_PUBLISH_PROFILE
+
+    - name: Publish
+      run: dotnet publish -c Release -o './myapp' ./src/GithubActionsExample.sln
+
+    - name: Run Azure webapp deploy action using publish profile credentials
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: 'GitHubActions-PCC2021'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }}
+        package: './myapp'
